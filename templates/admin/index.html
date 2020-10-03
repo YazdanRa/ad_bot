@@ -1,0 +1,163 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+
+{{ super() }}
+
+{% if current_user.is_authenticated %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+      Dashboard 
+      <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+  </ol>
+</section>
+
+<section class="content">
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>-</h3>
+          <p>Total Users</p>
+      </div>
+      <div class="icon">
+          <i class="ion ion-person"></i>
+      </div>
+  </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-green">
+    <div class="inner">
+      <h3>53</h3>
+
+      <p>Toatl Deposits</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+  </div>
+  
+</div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-yellow">
+    <div class="inner">
+      <h3>44</h3>
+
+      <p>Toatl Withdraw</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+  </div>
+</div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-red">
+    <div class="inner">
+      <h3>65</h3>
+
+      <p>Total Advertisments</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-pie-graph"></i>
+  </div>
+</div>
+</div>
+<!-- ./col -->
+</div>
+<!-- /.row -->
+<!-- Main row -->
+
+<div class="box box-success">
+  <div class="box-header">
+  <h3>Top Users</h3>
+  </div>
+  
+  </div>
+  <!-- /.nav-tabs-custom -->
+
+  <!-- Chat box -->
+
+  <div class="box box-success">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+
+      <h3 class="box-title">Top Referrals</h3>
+
+</div>
+</div>
+
+<!-- /.box (chat box) -->
+
+<!-- TO DO List -->
+<div class="box box-primary">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+
+      <h3 class="box-title">Top Users by Task</h3>
+</div>
+</div>
+
+      
+
+<!-- quick email widget -->
+<div class="box box-info">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+
+      <h3 class="box-title">Withdraw Request</h3>
+    
+</div>
+</div>
+
+
+<!-- solid sales graph -->
+
+{% else %}
+
+<center>
+    <section class="content" style="color: white">
+        <div class="col-sm-12">
+            <h1>Flask-Admin example</h1>
+            <p class="lead">
+                Authentication
+            </p>
+            <p>
+                This example shows how you can use Flask-Admin in an admin template, <br> here I used AdminLTE and <a href="https://pythonhosted.org/Flask-Security/index.html" target="_blank">Flask-Security</a> for authentication.
+            </p>
+            {% if not current_user.is_authenticated %}
+            <p>You can register as a regular user, or log in as a superuser with the following credentials: <br><br>
+
+                email: <b>admin</b> <br>
+                password: <b>admin</b> <br>
+                <br>
+                <p>
+                  <a class="btn btn-primary" href={{url_for('login_view')}}>Login</a> <a class="btn btn-default" href="security/login_user.html">Register</a>
+                </p>
+                {% endif %}
+                <br>
+                <p>
+                    <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+                </p>
+            </div>
+        </section>
+    </center>
+
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+ {% endif %}
+
+
+{% endblock body %}

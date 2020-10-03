@@ -1,0 +1,194 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+{{ super() }}
+
+{% if current_user.is_authenticated %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+      Dashboard 
+      <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+  </ol>
+</section>
+
+<section class="content">
+  <!-- Small boxes (Stat box) -->
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>{{context.total_users}}</h3>
+          <p>Total Users</p>
+      </div>
+      <div class="icon">
+          <i class="ion ion-person"></i>
+      </div>
+  </div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-green">
+    <div class="inner">
+      <h3>{{context.total_deposit}}</h3>
+
+      <p>Toatl Deposits</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+  </div>
+  
+</div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-yellow">
+    <div class="inner">
+      <h3>{{context.total_withdraw}}</h3>
+
+      <p>Toatl Withdraw</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-stats-bars"></i>
+  </div>
+</div>
+</div>
+<!-- ./col -->
+<div class="col-lg-3 col-xs-6">
+  <!-- small box -->
+  <div class="small-box bg-red">
+    <div class="inner">
+      <h3>{{context.total_ads}}</h3>
+
+      <p>Total Advertisments</p>
+  </div>
+  <div class="icon">
+      <i class="ion ion-pie-graph"></i>
+  </div>
+</div>
+</div>
+<!-- ./col -->
+</div>
+<!-- /.row -->
+<!-- Main row -->
+
+<div class="box box-success">
+  <div class="box-header">
+    <i class="ion ion-person"></i>
+    <h3 class="box-title">Top User</h3>
+
+  <div>
+    <table class="table table-striped">
+        <th>Username</th>
+        <th>Total Referals</th>
+      {%for i in context.top_users%}
+      <tr>
+      <td><a href="https://t.me/{{i.username}}">@{{i.username}}</a></td>
+      <td>{{i.balance}}</td>
+    </tr>
+      {%endfor%}
+    
+    
+  </table>
+</div>
+  </div>
+  
+  </div>
+  <!-- /.nav-tabs-custom -->
+
+  <!-- Chat box -->
+
+  <div class="box box-success">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+      <h3 class="box-title">Top Referrals</h3>
+      <div>
+        <table class="table table-striped">
+            <th>Username</th>
+            <th>Total Referals</th>
+          {%for i in context.top_ref%}
+          <tr>
+          <td><a href="https://t.me/{{i.username}}">@{{i.username}}</a></td>
+          <td>{{i.refferal}}</td>
+        </tr>
+          {%endfor%}
+        
+        
+      </table>
+    </div>
+      
+
+</div>
+</div>
+
+<!-- /.box (chat box) -->
+
+<!-- TO DO List -->
+<div class="box box-primary">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+
+      <h3 class="box-title">Top Users by Task</h3>
+      <div>
+        <table class="table table-striped">
+            <th>Username</th>
+            <th>Total Referal</th>
+          {%for i in context.top_earn%}
+          <tr>
+          <td><a href="https://t.me/{{i.username}}">@{{i.username}}</a></td>
+          <td>{{i.earning}}</td>
+        </tr>
+          {%endfor%}
+        
+        
+      </table>
+    </div>
+</div>
+</div>
+
+      
+
+<!-- quick email widget -->
+<div class="box box-info">
+    <div class="box-header">
+      <i class="ion ion-clipboard"></i>
+
+      <h3 class="box-title">Top Advertisement</h3>
+    
+</div>
+</div>
+
+
+<!-- solid sales graph -->
+
+{% else %}
+
+<center>
+    <section class="content" style="color: white">
+        <div class="col-sm-12">
+            <h1>Please Login </h1>
+            {% if not current_user.is_authenticated %}
+                <p>
+                  <a class="btn btn-primary" href={{url_for('login_')}}>Login</a>
+                {% endif %}
+                <br>
+                <p>
+                    <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+                </p>
+            </div>
+        </section>
+    </center>
+
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+ {% endif %}
+
+
+{% endblock body %}
